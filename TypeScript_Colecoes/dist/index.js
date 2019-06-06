@@ -17,7 +17,7 @@ function logMapElements(value, key, map) {
 mapa.forEach(logMapElements);
 //Exercicio 6
 function getMax(array) {
-    let maior = 0;
+    let maior = array[0];
     for (let valor of array) {
         if (valor > maior) {
             maior = valor;
@@ -45,4 +45,25 @@ function toMax(array) {
     return mapa;
 }
 console.log(toMax([3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 9, 9]));
+//Exercicio 7 professor
+function frequencia(array) {
+    let contagem = new Map();
+    for (let valor of array) {
+        if (contagem.has(valor)) {
+            contagem.set(valor, (contagem.get(valor) || 0) + 1);
+            // ! Remove os tipos null e undefined
+            //contagem.set(valor, contagem.get(valor)!+1);
+        }
+        else {
+            contagem.set(valor, 1);
+        }
+    }
+    return contagem;
+}
+console.log(frequencia([3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 9, 9]));
+//Exercicio 7 professor V2
+function frequenciaV2(array) {
+    return array.reduce((contagem, valor) => contagem.set(valor, (contagem.get(valor) || 0) + 1), new Map());
+}
+console.log(frequenciaV2([2, 3, 4, 4, 5, 5, 5, 6, 6, 6]));
 //# sourceMappingURL=index.js.map

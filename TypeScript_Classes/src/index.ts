@@ -1,4 +1,4 @@
-/*class Pessoa{
+class Pessoa{
     nome: string;
     idade: number;
 
@@ -7,7 +7,7 @@
         this.idade = i;
     }
 }
-
+/*
 let p1: Pessoa;
 p1 = new Pessoa('Jhon Doe', 56);
 console.log(p1);
@@ -156,6 +156,7 @@ function desenhar(d:Desenhavel){
 desenhar(fig1);
 */
 //Usando função para moificar funções
+/*
 interface Predicado<T> {
     (item: T): boolean;
 }
@@ -169,4 +170,11 @@ function filtrar<T>(array:T[], filtro:Predicado<T>): T[]{
     }
     return resultado
 }
-console.log(filtrar(([0,10,1,3,2]), i=>i%2===0));
+*/
+
+let umaPessoa = new Pessoa('Jhon Doe',22);
+let json = JSON.stringify(umaPessoa);
+console.log(json);
+let jsonstring = '{"nome": "Jhon Doe","Idade":22}';
+let obj = JSON.parse(jsonstring)
+console.log(obj);

@@ -1,11 +1,12 @@
 "use strict";
-class Pessoa {
-    constructor(n, i) {
-        this.nome = n;
-        this.idade = i;
+function filtrar(array, filtro) {
+    let resultado = [];
+    for (let i = 0; i < array.length; i++) {
+        if (filtro(array[i])) {
+            resultado.push(array[i]);
+        }
     }
+    return resultado;
 }
-let p1;
-p1 = new Pessoa('Jhon Doe', 56);
-console.log(p1);
+console.log(filtrar(([0, 10, 1, 3, 2]), i => i % 2 === 0));
 //# sourceMappingURL=index.js.map

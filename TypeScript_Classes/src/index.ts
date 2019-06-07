@@ -1,4 +1,4 @@
-class Pessoa{
+/*class Pessoa{
     nome: string;
     idade: number;
 
@@ -101,6 +101,72 @@ class ProdutoPerecivel extends Produto{
     //comparação de objetos é por sua estrutura!
 
    // let prod3:Produto = {_nome:'teste', _preco:2.50};
+*/
+/*  
+abstract class FiguraBidimensional{
+    constructor(private _centrox: number, private _centroy:number){
 
+    }
+    get x(): number {
+        return this._centrox;
+    }
+    get y():number{
+        return this._centroy;
+    }
+    abstract area():number;
+   }
 
+   class Circulo extends FiguraBidimensional{
+       constructor(centrox:number, centroy:number,private _raio:number){
+           super(centrox, centroy);
+       }
+        area():number{
+           return Math.PI * this._raio **2;
+       }
+       get raio():number{
+           return this._raio;
+       }
+   }
+   let fig1: FiguraBidimensional = new Circulo(1,1,3);
+   console.log(fig1);
+   console.log(fig1.area());
+   console.log(fig1.x);
+   console.log((<Circulo>fig1).raio);
 
+   let pessoa = {
+       nome: 'Jhon Doe', 
+       idade : 22
+   };
+
+   let{nome, idade} = pessoa;
+   console.log(nome);
+   console.log(idade);
+   let{x,y} = fig1;
+   console.log(x);
+   console.log(y);
+
+interface Desenhavel{
+    x:number;
+    y:number;
+}
+//Controlar comportamento de objetos de maneira mais abtrata possível, levando em conta é a estrutura!
+function desenhar(d:Desenhavel){
+    console.log(`x=${d.x} y=${d.y}`);
+}
+desenhar(fig1);
+*/
+//Usando função para moificar funções
+interface Predicado<T> {
+    (item: T): boolean;
+}
+
+function filtrar<T>(array:T[], filtro:Predicado<T>): T[]{
+    let resultado:T[] = [];
+    for(let i = 0; i<array.length; i++){
+        if(filtro(array[i])){
+            resultado.push(array[i]);
+        }
+    }
+    return resultado
+}
+console.log(filtrar(([0,10,1,3,2]), i=>i%2===0));

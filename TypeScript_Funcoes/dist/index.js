@@ -29,4 +29,8 @@ function multiplicador(fator) {
 //console.log(multiplicador(3)); /retorna a [funcao]
 //Passa o parâmetro para ambas as funções
 console.log(multiplicador(3)(4));
+let palavras = ['a', 'b'];
+console.log(palavras.pop());
+console.log(palavras.pop());
+console.log(palavras.pop()); // retorna undefined
 //# sourceMappingURL=index.js.map

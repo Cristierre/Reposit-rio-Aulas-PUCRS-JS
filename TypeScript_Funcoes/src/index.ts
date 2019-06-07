@@ -35,3 +35,9 @@ function multiplicador(fator: number): (n: number) => number{
 
 //Passa o parâmetro para ambas as funções
 console.log(multiplicador(3)(4));
+
+let palavras:string[] = ['a','b'];
+console.log(palavras.pop());
+console.log(palavras.pop());
+console.log(palavras.pop());// retorna undefined
+

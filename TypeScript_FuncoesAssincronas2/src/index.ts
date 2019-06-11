@@ -22,7 +22,7 @@ async function chamada(){
         await salvarCofrinho(cofre, 'cofre.txt');
         
     }catch(err){
-        console.log(err.message)
+        console.log("teste", err.message)
     }
 }
 

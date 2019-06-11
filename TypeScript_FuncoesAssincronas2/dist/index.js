@@ -36,5 +36,16 @@ function chamada() {
         }
     });
 }
-chamada();
+function leitura() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            return yield console.log(Persistencia_1.lerCofrinho('cofre.txt'));
+        }
+        catch (err) {
+            console.log(err.message);
+        }
+    });
+}
+//chamada()
+leitura();
 //# sourceMappingURL=index.js.map

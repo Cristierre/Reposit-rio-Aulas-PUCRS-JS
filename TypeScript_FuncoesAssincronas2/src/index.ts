@@ -1,6 +1,7 @@
 import Cofrinho from './entidades/Cofrinho'
 import Moeda from './entidades/Moeda' 
-import {salvarCofrinho} from './persistencia/Persistencia'
+import {salvarCofrinho,lerCofrinho} from './persistencia/Persistencia'
+
 
 
 
@@ -22,9 +23,19 @@ async function chamada(){
         await salvarCofrinho(cofre, 'cofre.txt');
         
     }catch(err){
-        console.log("teste", err.message)
+        console.log(err.message)
+    }
+}
+async function leitura(){
+    try{
+        return await console.log(lerCofrinho('cofre.txt'));
+        
+    }catch(err){
+        console.log(err.message)
     }
 }
 
-chamada()
+
+//chamada()
+leitura();
 

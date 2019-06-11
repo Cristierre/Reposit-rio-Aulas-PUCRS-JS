@@ -16,13 +16,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
-const fsPromisses = fs.promises;
+const fs_1 = require("fs");
+const fsPromises = fs_1.promises;
 console.log(fs);
+console.log(fsPromises);
 function salvarCofrinho(cofrinho, nomeArquivo) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             try {
-                resolve(fsPromisses.writeFile(nomeArquivo, JSON.stringify(cofrinho)));
+                resolve(fsPromises.writeFile(nomeArquivo, JSON.stringify(cofrinho)));
                 console.log("Salvo!");
             }
             catch (err) {
@@ -33,6 +35,17 @@ function salvarCofrinho(cofrinho, nomeArquivo) {
     });
 }
 exports.salvarCofrinho = salvarCofrinho;
-//lerCofrinho(nomeArquivo: string){
-//}
+function lerCofrinho(nomeArquivo) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield new Promise((resolve, reject) => {
+            try {
+                resolve(fs.readFileSync(nomeArquivo, 'utf8'));
+            }
+            catch (err) {
+                reject(console.log(err.message));
+            }
+        });
+    });
+}
+exports.lerCofrinho = lerCofrinho;
 //# sourceMappingURL=Persistencia.js.map

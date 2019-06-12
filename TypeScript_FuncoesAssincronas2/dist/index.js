@@ -19,13 +19,11 @@ let valor = new Moeda_1.default(0.50, 'Cinquenta cents');
 let valor2 = new Moeda_1.default(1, '1 real');
 cofre.adicionar(valor);
 cofre.adicionar(valor2);
-/*
 //console.log(cofre.calcularTotal());
 console.log(JSON.stringify(valor));
 console.log(cofre.moedasCofre);
-console.log('Menor valor',cofre.menorMoeda());
+console.log('Menor valor', cofre.menorMoeda());
 console.log(cofre.frequenciaMoeda());
-*/
 function chamada() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -48,4 +46,5 @@ function leitura() {
 }
 //chamada()
 leitura();
+Persistencia_1.salvarCofrinho(cofre, 'professorTeste.ts');
 //# sourceMappingURL=index.js.map

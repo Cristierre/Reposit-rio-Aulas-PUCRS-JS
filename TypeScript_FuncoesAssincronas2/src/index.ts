@@ -36,6 +36,6 @@ async function leitura(){
 }
 
 
-//chamada()
-leitura();
+chamada()
+//leitura();
 

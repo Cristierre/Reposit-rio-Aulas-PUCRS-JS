@@ -1,5 +1,6 @@
 //import {} from 'fs';
 import * as fs from 'fs'; // << Importa tudo para dentro do método
+
 /*
 try{
 fs.writeFileSync('dados.txt','teste'); //função síncrona!
@@ -37,6 +38,7 @@ fs.readFile('pessoa.json','utf-8',(erro, dados)=>{
     }
 });
 */
+/*
 //Criando uma função assíncrona
 //ATENÇÃO:Promise é um interface!
 //quando retornado Promise é uma função Assíncrona!
@@ -63,6 +65,7 @@ lerArquivoAsync('dado.txt').then(
     );
 
 */
+/*
 (async ()=>{
     try{
         let dados = await lerArquivoAsync('dados.txt');
@@ -72,3 +75,8 @@ lerArquivoAsync('dado.txt').then(
       console.log(erro.message);
     }
 })();
+*/
+
+
+
+//}

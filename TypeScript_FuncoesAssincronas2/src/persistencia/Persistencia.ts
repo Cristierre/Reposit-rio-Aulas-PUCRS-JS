@@ -2,7 +2,7 @@ import Cofrinho from "../entidades/Cofrinho";
 import Moeda from "../entidades/Moeda";
 import * as  fs from 'fs';
 import {promises} from 'fs';
-import { resolve } from "dns";
+import { resolve, CONNREFUSED } from "dns";
 import { rejects } from "assert";
   
     const fsPromises = promises;
@@ -31,4 +31,15 @@ import { rejects } from "assert";
         })
 
 
+    }
+
+    export async function lerCofreAsync(nomeArq:string): Programa<Cofrinho>{
+        const dados =  await promises.readFile(nomeArq,'utf-8');
+        try{
+            const obj = JSON.parse(dados);
+            const cofre = new Cofrinho();
+            for(let i = 0; i< obj._moedas.length; i++){
+                CONNREFUSED.adicionar(new Moeda(obj.data[i]._valor))
+            }
+        }
     }

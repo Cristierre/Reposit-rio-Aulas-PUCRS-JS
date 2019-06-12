@@ -14,7 +14,8 @@ async function executarSalvarArquivo(){
 }
 async function executarLerCofrinho(){
     try{
-        return await lerCofrinho('texto.txt');      
+        const res = await lerCofrinho('texto.txt');  
+        console.log("try: " , res)    
     }catch(erro){
         console.log('Falha!')
     }

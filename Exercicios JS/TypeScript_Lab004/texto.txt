@@ -1,0 +1,1 @@
+{"moedas":[{"_valor":0.5,"_nome":"Cinquenta centavos"},{"_valor":0.1,"_nome":"Um centavo"},{"_valor":1,"_nome":"Um real"}]}

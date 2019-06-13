@@ -1,0 +1,1 @@
+{"moedas":[{"_valor":0.05,"_nome":"Cinco centavos"},{"_valor":1,"_nome":"Um real"},{"_valor":0.25,"_nome":"Vinte e cinco centavos"},{"_valor":0.5,"_nome":"Cinquenta centavos"},{"_valor":0.1,"_nome":"Dez centavos"},{"_valor":0.5,"_nome":"Cinquenta centavos"}]}

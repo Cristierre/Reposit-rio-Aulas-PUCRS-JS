@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\TypeScript_Lab03\\src\\exercicio1\\exercicio1.ts",
+            "program": "${workspaceFolder}ExerciciosJS\\TypeScript_Lab02\\dist\\index.js",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]

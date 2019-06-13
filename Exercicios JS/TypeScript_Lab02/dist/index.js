@@ -1,7 +1,7 @@
-import { getMaxListeners } from "cluster";
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /*
-//1. Escreva um trecho de código para imprimir os números pares definidos 
+//1. Escreva um trecho de código para imprimir os números pares definidos
 //por um intervalode valores inteiros não-negativos inicioe fim.
 //Utilize versões com fore while.
 
@@ -11,7 +11,7 @@ for (let i = inicio; i <= final; i++) {
     if(i%2 == 0){
         console.log(i);
     }
-} 
+}
 
 while (inicio <= final) {
     if(inicio%2 == 0){
@@ -39,8 +39,8 @@ function menor(x:number, y:number): number {
 }
     console.log(menor(2,1));
 
-//4. Escreva uma função pow(x,y)que calcula o valor de x^y, ou seja, x elevado a potência y. 
-//Assuma que os valores de x e y são números inteiros não negativose que x^0=1 
+//4. Escreva uma função pow(x,y)que calcula o valor de x^y, ou seja, x elevado a potência y.
+//Assuma que os valores de x e y são números inteiros não negativose que x^0=1
 //para qualquer valor de x.Apresente uma versão iterativa e uma versão recursiva para a função.
 //Não utilize o operador **.Utilize corretamente a declaração de tipos nos parâmetros e no resultado da função
 function iterativa(x:number, y:number): number {
@@ -71,7 +71,7 @@ console.log(recursiva(2,5));
 function toMaiusculaPrimeira(s:string):string {
     s = s.substring(0,1).toUpperCase().concat(s.substring(1));
     return s;
-}   
+}
     console.log(toMaiusculaPrimeira('quero deixar a primeira letra maiuscula dessa frase'));
 
 //6. Escreva uma função getMax(arr)que recebe um array de número inteiros e retorna o maior elemento
@@ -94,14 +94,14 @@ console.log(getMax([34,56,3,4,67,98,2,3]));
 //um determinado array contendo números inteiros.Utilize corretamente a declaração de tipos nos parâmetros
 //e no resultado da função.
 
-function frequencia(array: number[]) : Map<number, number>{ 
+function frequencia(array: number[]) : Map<number, number>{
     let contagem = new Map<number,number>();
     for (let valor of array){
         if (contagem.has(valor)){
             contagem.set(valor, contagem.get(valor)!+1);
         }else{
             contagem.set(valor,1);
-        } 
+        }
     }
     return contagem;
 }
@@ -113,8 +113,20 @@ function frequencia2(array: number[]): Map<number,number> {
 
 console.log(frequencia([1,2,1,0,4,2]));
 */
-
 //7. Escreva uma função que, utilizando objetos Map, calcule a frequência de cada número presente em
 //um determinado array contendo números inteiros.Utilize corretamente a declaração de tipos nos parâmetros
 //e no resultado da função.
-
+function frequenciaValor(array) {
+    let mapa = new Map();
+    for (let valor of array) {
+        if (mapa.has(valor)) {
+            mapa.set(valor, mapa.get(valor) + 1);
+        }
+        else {
+            mapa.set(valor, 1);
+        }
+    }
+    return mapa;
+}
+console.log(frequenciaValor([3, 3, 4, 5, 6, 6, 6, 6, 7, 8]));
+//# sourceMappingURL=index.js.map

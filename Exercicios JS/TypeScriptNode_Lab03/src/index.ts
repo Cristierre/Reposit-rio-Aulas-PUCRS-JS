@@ -2,52 +2,33 @@
 const PI = Math.PI;
 class Circulo{
     
-     private _coordenadaX: number;
-     private _coordenadaY: number;
-     private _raio: number; 
-
-     constructor(){
-        this._coordenadaX = 0;
-        this._coordenadaY = 0;
-        this._raio = 0;
-     } 
-      
-
-    set coordenadaX(x:number){
-        this._coordenadaX = x;
-    } 
+     constructor(
+        private _coordenadaX: number,
+        private _coordenadaY: number,
+        private _raio: number){       
+     }    
     get coordenadaX(): number{
         return this._coordenadaX;
-    }
-    set coordenadaY(y: number){
-        this._coordenadaY = y;
-    }
+    }  
     get coordenadaY(): number{
         return this._coordenadaY;
-    }
-    set tamanhoRaio(r: number){
-        this._raio = r;
-    }
+    }    
     get tamanhoRaio(): number{
         return this._raio;
     }
-    public calculoArea(r: number): number{
-        return PI*Math.pow(r,2);
+    public calculoArea(): number{
+        return PI*Math.pow(this._raio,2);
     }
     public calculoComprimento(): number{
-        return PI*(Math.pow(2,(this._raio*2)));
-    }
-    
+        return 2*PI*this._raio;
+    }    
 }
 
-let circulo = new Circulo();
-circulo.coordenadaX = 5;
-circulo.coordenadaY = 4;
-circulo.tamanhoRaio = 3.5;
+let circulo = new Circulo(6,3,6.5);
 
-console.log(circulo.calculoArea(6.3));
-console.log(circulo.calculoComprimento());
-
+console.log("Área= ",circulo.calculoArea());
+console.log("Comprimento= ",circulo.calculoComprimento());
+*/
 //Exercicio 2
 class Moeda{
     private valor:number;
@@ -65,10 +46,8 @@ class Moeda{
     }
 }
 class Cofrinho {
-    moedas:Moeda [] = []; 
-  //  valoresMoedas = [0.1,0.5,0.10,0.25,0.50,1]; map com valor do valor  
-    constructor(){       
-    }    
+    moedas:Moeda [] = [];     
+       
     adicionar(m:Moeda){
         this.moedas.push(m); 
     }
@@ -129,81 +108,6 @@ console.log(JSON.stringify(moeda1));
 console.log(moeda1);
 console.log("Menor valor instancia: ", cofre.menorValorInstancia());
 console.log("frequencia",cofre.frequencia());
-
-*/
-//Exercício 2 refactor
-/*
-class Moeda{
-    constructor(private _valor: number, private _nome: string){
-
-    }
-    get valor(): number{
-        return this._valor;
-    }
-    get nome(): string{
-        return this._nome;
-    }
-}
-
-class Cofrinho{
-    private mapa: Moeda[] = [];
-    constructor(){
-
-    }
-    adicionar(moeda: Moeda){
-        this.mapa.push(moeda);
-    }
-    calcularTotal(): number{
-        let total: number = 0;
-        for(let moedas of this.mapa){
-            total += moedas.valor;
-        }
-        return total;
-    }
-
-    menorMoeda(): Moeda{
-        let menor = this.mapa[0];
-        for(let valores of this.mapa){
-            if(valores < menor){
-                menor = valores;
-            }
-        }
-        return menor;
-    }
-    get moedasCofre(): Moeda[]{
-        return this.mapa;
-    }
-    frequenciaMoeda(): Map<string, number>{
-        let iterador = new Map<string, number>();
-        let moedasCofre: Moeda[] = this.moedasCofre;
-        this.mapa.map(function(m){
-            let contador: number = 0;
-            for(let i = 0; i< moedasCofre.length; i++){
-                if(moedasCofre[i].valor === m.valor){
-                    contador++;
-                }
-             }
-             iterador.set(m.nome,contador);       
-        });
-        
-        return iterador; 
-    
-    }
-}
-
-let cofre = new Cofrinho();
-let valor = new Moeda(0.50,'Cinquenta cents');
-let valor2 = new Moeda(1,'1 real');
-cofre.adicionar(valor);
-cofre.adicionar(valor2);
-
-//console.log(cofre.calcularTotal());
-console.log(JSON.stringify(valor));
-console.log(cofre.moedasCofre);
-console.log('Menor valor',cofre.menorMoeda());
-console.log(cofre.frequenciaMoeda());
-*/
-
 /*
 abstract class Cliente{
     private nome: string;

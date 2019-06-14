@@ -7,3 +7,4 @@ export const AutorModel: Model<AutorDocument> = model<AutorDocument>('Autor', ne
     primeiro_nome: { type: String, required: true, max: 100 },
     ultimo_nome: { type: String, required: true, max: 100 }
 }), 'autores');
+

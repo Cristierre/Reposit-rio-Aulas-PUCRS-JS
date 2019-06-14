@@ -11,7 +11,12 @@ export class AutorRepositorio {
         let consulta = AutorModel.find();
         return consulta.exec();
     }
-    static async buscarPorUltimoNome(){
-        let consultaUltimoNome = AutorModel.
+
+    static async buscarPeloNome(nome: string): Promise<Autor[]>{
+        let consulta = AutorModel.where(nome);
+        let resultConsulta: string;
+
+        return resultConsulta;
     }
+    
 }

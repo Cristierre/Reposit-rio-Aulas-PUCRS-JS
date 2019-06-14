@@ -8,26 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const livroModel_1 = require("./livroModel"); //pega com as dificições de livroModel
 const autorModel_1 = require("./autorModel");
-class AutorRepositorio {
-    static criar(autor) {
+class LivroRepositorio {
+    // entra um livro, retorna uma promise de livro
+    static criar(livro) {
         return __awaiter(this, void 0, void 0, function* () {
-            let novoAutor = yield autorModel_1.AutorModel.create(autor);
-            return novoAutor.save();
+            return livroModel_1.LivroModel.create(livro);
         });
     }
     static buscar() {
         return __awaiter(this, void 0, void 0, function* () {
-            let consulta = autorModel_1.AutorModel.find();
-            return consulta.exec();
-        });
-    }
-    static buscarPeloNome(nome) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let consulta = autorModel_1.AutorModel.where(nome);
-            return consulta.exec();
+            return livroModel_1.LivroModel.find().populate('autores', autorModel_1.AutorModel).exec();
         });
     }
 }
-exports.AutorRepositorio = AutorRepositorio;
-//# sourceMappingURL=autorRepositorio.js.map
+exports.LivroRepositorio = LivroRepositorio;
+//# sourceMappingURL=livroRepositorio.js.map

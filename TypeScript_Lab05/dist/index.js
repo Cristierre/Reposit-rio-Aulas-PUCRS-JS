@@ -30,9 +30,9 @@ function main() {
             });
             */
             /*
-             console.log('Buscando autores...');
-             let autores = await AutorRepositorio.buscar();
-             autores.forEach(autor => console.log(autor));
+            console.log('Buscar por ultimo nome')
+            let autores = await AutorRepositorio.buscarPorUltimoNome();
+            autores.forEach(autor => console.log(autor.ultimo_nome));
              */
             /*
             console.log('Buscando livros...');

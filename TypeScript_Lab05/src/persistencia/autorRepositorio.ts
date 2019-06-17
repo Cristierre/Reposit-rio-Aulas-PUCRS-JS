@@ -11,12 +11,13 @@ export class AutorRepositorio {
         let consulta = AutorModel.find();
         return consulta.exec();
     }
-
-    static async buscarPeloNome(nome: string): Promise<Autor[]>{
-        let consulta = AutorModel.where(nome);
-        let resultConsulta: string;
-
-        return resultConsulta;
-    }
     
+    static async buscarPorUltimoNome(): Promise<Autor[]>{
+        let consultaUltimoNome = AutorModel.find();
+        return consultaUltimoNome.exec();
+    }
+    static async alterarRegistro(id: string, nomeAlt:string, ultimoNomeAlt: string):Promise<void>{
+        await AutorModel.updateOne({_id: id} ,{primeiro_nome : nomeAlt, ultimo_nome : ultimoNomeAlt});
+        console.log('Alterado com sucesso!')
+    }   
 }

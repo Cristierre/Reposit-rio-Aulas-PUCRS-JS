@@ -36,7 +36,7 @@ async function main() {
         console.log(modificarRegistro)
         */
        console.log('Cadastrar livro');
-        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'O Hobbit', autores:);
+        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'O Hobbit',});
         if (cliente && cliente.connection) {
             cliente.connection.close();
         }

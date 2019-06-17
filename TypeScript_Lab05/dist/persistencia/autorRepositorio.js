@@ -22,6 +22,18 @@ class AutorRepositorio {
             return consulta.exec();
         });
     }
+    static buscarPorUltimoNome() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let consultaUltimoNome = autorModel_1.AutorModel.find();
+            return consultaUltimoNome.exec();
+        });
+    }
+    static alterarRegistro(id, nomeAlt, ultimoNomeAlt) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield autorModel_1.AutorModel.updateOne({ _id: id }, { primeiro_nome: nomeAlt, ultimo_nome: ultimoNomeAlt });
+            console.log('Alterado com sucesso!');
+        });
+    }
 }
 exports.AutorRepositorio = AutorRepositorio;
 //# sourceMappingURL=autorRepositorio.js.map

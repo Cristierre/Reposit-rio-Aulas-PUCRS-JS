@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+const autorRepositorio_1 = require("./persistencia/autorRepositorio");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = 'mongodb://localhost:27017/biblioteca';
@@ -21,12 +22,25 @@ function main() {
             console.log(`Autor inserido: ${a1}`);
             let a2 = await AutorRepositorio.criar({primeiro_nome: 'Mary', ultimo_nome: 'Doe'});
             console.log(`Autor inserido: ${a2}`);
+            
+           
+            console.log('Buscando autores...');
+            let autores = await AutorRepositorio.buscar();
+            autores.forEach(autor => console.log(autor));
             */
             /*
-             console.log('Buscando autores...');
-             let autores = await AutorRepositorio.buscar();
-             autores.forEach(autor => console.log(autor));
+            console.log('Buscar por ultimo nome')
+            let autores = await AutorRepositorio.buscarPorUltimoNome();
+            autores.forEach(autor => console.log(autor.ultimo_nome));
              */
+            /*
+            console.log('Buscar por primeiro nome')
+            let autores = await AutorRepositorio.buscarPorUltimoNome();
+            autores.forEach(autor => console.log(autor.primeiro_nome));
+             */
+            console.log('Alterar registro de autor');
+            let modificarRegistro = yield autorRepositorio_1.AutorRepositorio.alterarRegistro('5d07949be391dc2b68c0e799', 'Michael', 'Trump');
+            console.log(modificarRegistro);
             if (cliente && cliente.connection) {
                 cliente.connection.close();
             }

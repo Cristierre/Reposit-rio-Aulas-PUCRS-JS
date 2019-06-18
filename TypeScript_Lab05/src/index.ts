@@ -3,6 +3,9 @@ import { AutorRepositorio } from './persistencia/autorRepositorio';
 import { AutorModel } from './persistencia/autorModel';
 import { LivroRepositorio } from './persistencia/livroRepositorio';
 import { Autor } from './entidades/autor';
+import { Livro } from './entidades/livro';
+import { EmprestimoRepositorio } from './persistencia/emprestimoRepositorio';
+import { Emprestimo } from './entidades/emprestimo';
 
 async function main() {
     const url = 'mongodb://localhost:27017/biblioteca';
@@ -34,7 +37,7 @@ async function main() {
         //populate() $lookup, permite fazr integração de diferentes coleções!
        let livros = await LivroRepositorio.buscar();
        livros.forEach(l => console.log(`Autores:${l.autores.map(a => a.ultimo_nome)}`));
-
+        
        console.log('Buscar por ultimo nome')
        let autores = await AutorRepositorio.buscarPorUltimoNome();
        autores.forEach(autor => console.log(autor.ultimo_nome));
@@ -48,21 +51,39 @@ async function main() {
        console.log('Alterar registro de autor')
        let modificarRegistro = await AutorRepositorio.alterarRegistro('5d07949be391dc2b68c0e799','Michael','Trump'); 
         console.log(modificarRegistro)
-        */
-       console.log('Cadastrar livro');
-       const autor1: Autor = {
-           primeiro_nome: 'Jhon',
-           ultimo_nome: 'Doe'
-       }
-        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'O Hobbit',autores:[autor1]});
+    */
+   /*
+        console.log('Cadastrando Livro');
+        let autor = await AutorRepositorio.buscarPorId("5d07949be391dc2b68c0e79a");  
+        let autor2 = await AutorRepositorio.buscarPorId("5d079842018b0818a0debf14");      
+        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'TypeScript para loucos',autores:[autor, autor2]});        
+ */
+/*
+        console.log("Buscando todos os livros da coleção")
+       let buscarLivro = await LivroRepositorio.buscar();
+       console.log(buscarLivro);
+*/
+/*
+        console.log("Buscar livro por id de Autor")
+        let buscarPorAutor = await LivroRepositorio.buscarPorAutor("5d07949be391dc2b68c0e79a");
+        console.log(buscarPorAutor);
+*/
+       console.log('Buscar Livro por id')
+       let livroEmp = await LivroRepositorio.buscarLivroPorId("5d08e793fa6acd1e200d8e1b");
+        const emprestimo: Emprestimo = {
+            livro: livroEmp,
+            dataRetirada: new Date(Date.now()),
+            dataEntrega: new Date(Date.now() + 7*24*60*60*1000)
+        }
+        
+        console.log('Cadastrando Emprestimo');
+        let cadastroEmprestimo = await EmprestimoRepositorio.cadastrarEmprestimo(emprestimo);
 
         if (cliente && cliente.connection) {
             cliente.connection.close();
         }
         
-        console.log('Buscar pelo ultimo nome!');
-        let autores = await AutorRepositorio.buscar();
-        autores.forEach(aut => console.log(aut));
+       
     } catch (erro) {
         console.log(`Erro: ${erro.message}`);
     }

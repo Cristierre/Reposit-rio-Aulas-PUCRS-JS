@@ -13,7 +13,6 @@ class AutorRepositorio {
     static criar(autor) {
         return __awaiter(this, void 0, void 0, function* () {
             let novoAutor = yield autorModel_1.AutorModel.create(autor);
-            return novoAutor.save();
         });
     }
     static buscar() {
@@ -22,24 +21,27 @@ class AutorRepositorio {
             return consulta.exec();
         });
     }
-
-    static buscarPeloNome(nome) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let consulta = autorModel_1.AutorModel.where(nome);
-            return consulta.exec();
-        }
-    }
     static buscarPorUltimoNome() {
         return __awaiter(this, void 0, void 0, function* () {
             let consultaUltimoNome = autorModel_1.AutorModel.find();
             return consultaUltimoNome.exec();
         });
     }
+    static buscarPorId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let idAutor = yield autorModel_1.AutorModel.findById(id).exec();
+            if (idAutor !== null) {
+                return idAutor;
+            }
+            else {
+                throw new Error("Erro: Autor não encontrado");
+            }
+        });
+    }
     static alterarRegistro(id, nomeAlt, ultimoNomeAlt) {
         return __awaiter(this, void 0, void 0, function* () {
             yield autorModel_1.AutorModel.updateOne({ _id: id }, { primeiro_nome: nomeAlt, ultimo_nome: ultimoNomeAlt });
             console.log('Alterado com sucesso!');
-
         });
     }
 }

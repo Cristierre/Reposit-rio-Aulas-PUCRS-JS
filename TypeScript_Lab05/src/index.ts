@@ -6,6 +6,7 @@ import { Autor } from './entidades/autor';
 import { Livro } from './entidades/livro';
 import { EmprestimoRepositorio } from './persistencia/emprestimoRepositorio';
 import { Emprestimo } from './entidades/emprestimo';
+import {buscarDetalhadaLivros,emprestimoSeteDias,devolucaoLivro} from './negocios/negocios'
 
 async function main() {
     const url = 'mongodb://localhost:27017/biblioteca';
@@ -54,31 +55,46 @@ async function main() {
     */
    /*
         console.log('Cadastrando Livro');
-        let autor = await AutorRepositorio.buscarPorId("5d07949be391dc2b68c0e79a");  
-        let autor2 = await AutorRepositorio.buscarPorId("5d079842018b0818a0debf14");      
-        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'TypeScript para loucos',autores:[autor, autor2]});        
+        let autor = await AutorRepositorio.buscarPorId("5d079842018b0818a0debf15");  
+        let autor2 = await AutorRepositorio.buscarPorId("5d07949be391dc2b68c0e799");      
+        let livro = await LivroRepositorio.cadastrarLivro({titulo: 'Programação para deficientes',autores:[autor], status: false});        
  */
-/*
-        console.log("Buscando todos os livros da coleção")
-       let buscarLivro = await LivroRepositorio.buscar();
-       console.log(buscarLivro);
-*/
 /*
         console.log("Buscar livro por id de Autor")
         let buscarPorAutor = await LivroRepositorio.buscarPorAutor("5d07949be391dc2b68c0e79a");
         console.log(buscarPorAutor);
 */
+/*
        console.log('Buscar Livro por id')
-       let livroEmp = await LivroRepositorio.buscarLivroPorId("5d08e793fa6acd1e200d8e1b");
-        const emprestimo: Emprestimo = {
-            livro: livroEmp,
-            dataRetirada: new Date(Date.now()),
-            dataEntrega: new Date(Date.now() + 7*24*60*60*1000)
-        }
-        
-        console.log('Cadastrando Emprestimo');
-        let cadastroEmprestimo = await EmprestimoRepositorio.cadastrarEmprestimo(emprestimo);
+       const idLivro = "5d0a2d3d14170712e84ceafd";
+       let livroEmp = await LivroRepositorio.buscarLivroPorId(idLivro);
+       let emprestimo: Emprestimo;
+       if(livroEmp.status === true){
+            emprestimo = {
+               livro: livroEmp,
+               dataRetirada: new Date(Date.now()),
+               dataEntrega: new Date(Date.now() + 7*24*60*60*1000)               
+           }
+           console.log('Cadastrando Emprestimo');
+           let cadastroEmprestimo = await EmprestimoRepositorio.cadastrarEmprestimo(emprestimo);
+           console.log(cadastroEmprestimo);
 
+           let mudarStatus = await LivroRepositorio.modificadorStatusLivro(idLivro);
+           console.log(cadastroEmprestimo)
+       }else{
+           console.log('Livro indisponível no momento!')
+       }
+       
+       */
+      /*     const emprestimo = await emprestimoSeteDias("5d0a2de9be7ec91cd8867133");      
+
+        const buscarLivros = await buscarDetalhadaLivros();
+        console.log(buscarLivros);
+
+       */
+       const emprestimo = await devolucaoLivro("5d0a2d3d14170712e84ceafd");
+       console.log(emprestimo);
+    
         if (cliente && cliente.connection) {
             cliente.connection.close();
         }

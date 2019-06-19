@@ -2,6 +2,7 @@ import {LivroModel} from './livroModel'
 import {AutorModel} from './autorModel'
 import {Livro} from '../entidades/livro'
 import { Autor } from '../entidades/autor';
+import { stringify } from 'querystring';
 
 export class LivroRepositorio{
 
@@ -11,7 +12,7 @@ export class LivroRepositorio{
     }
 
     static async buscar(): Promise<Livro[]> {
-        let consulta = LivroModel.find().populate('autores', AutorModel).exec();
+        let consulta = LivroModel.find().populate('autores', AutorModel).exec();        
         return consulta;
     }
 
@@ -25,9 +26,11 @@ export class LivroRepositorio{
             return livro;
         }else{
             throw new Error("Livro não está na base de dados!");
-        }
-        
-        
+        }       
+    }
+
+    static async modificadorStatusLivro(id: string, status: boolean = true): Promise<void>{
+        let emprestar = await LivroModel.updateOne({_id: id}, {status: status});
     }
 
 }

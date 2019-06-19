@@ -40,6 +40,11 @@ class LivroRepositorio {
             }
         });
     }
+    static modificadorStatusLivro(id, status = true) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let emprestar = yield livroModel_1.LivroModel.updateOne({ _id: id }, { status: status });
+        });
+    }
 }
 exports.LivroRepositorio = LivroRepositorio;
 //# sourceMappingURL=livroRepositorio.js.map

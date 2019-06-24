@@ -1,0 +1,1 @@
+{"version":3,"file":"livro.rotas.js","sourceRoot":"","sources":["../../src/api/livro.rotas.ts"],"names":[],"mappings":";;;;;;;;;AAAA,qCAA+B;AAC/B,iEAAmD;AAEtC,QAAA,MAAM,GAAG,gBAAM,EAAE,CAAC;AAClB,QAAA,IAAI,GAAG,SAAS,CAAC;AAE9B,cAAM,CAAC,GAAG,CAAC,EAAE,EAAE,WAAW,CAAC,SAAS,CAAC,CAAC;AACtC,cAAM,CAAC,GAAG,CAAC,MAAM,EAAC,WAAW,CAAC,QAAQ,CAAC,CAAC"}

@@ -1,5 +1,7 @@
 import { json } from "express";
 import fetch,{Response} from 'node-fetch';
+import app from './app';
+import { connect } from "mongoose";
 
 
 async function Main(){
@@ -33,8 +35,10 @@ async function Main(){
         }else{
             console.log(`Erro: ${resposta.status}`);
        }
-*/ 
+*/
+/* 
        //POST
+       // cria um objeto literal para dar o post
        const usuario = {
            nome:"Cristierre Gomes Konrath",
            email: "cristierrekonrath95@gmail.com",
@@ -47,18 +51,33 @@ async function Main(){
         },
         body: JSON.stringify(usuario)
        });
-
        if(respostaPost.ok){
            let post: Post = await respostaPost.json();
            console.log(post);
-       }else{
+        }else{
            console.log(`Erro de POST: ${respostaPost.status}`);
        }
-       
+*/
+/*      
+       //DELETE
+       let respostaDelete: Response = await fetch(`${url}/api/users/2`,{
+            method: 'DELETE'
+       });
+       console.log(`${respostaDelete.status}: ${respostaDelete.statusText}`)    
+*/
+       //Conectando ao Mongo
+       debugger
+       const servidorMongoDB = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
+       await connect(servidorMongoDB,{useNewUrlParser: true});
+
+       //iniciar Express
+       app.listen(app.get('port'), ()=>{
+           console.log(`Express executando em http://localhost:${app.get('port')} no modo ${app.get('env')}`);
+       })
 
     }catch(err){
         console.log(`Erro: ${err}`);
-
+        
     }
 
 }

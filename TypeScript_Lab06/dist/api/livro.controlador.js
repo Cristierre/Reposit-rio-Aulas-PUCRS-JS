@@ -12,7 +12,9 @@ const livroRepositorio_1 = require("../persistencia/livroRepositorio");
 function getLivros(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log('parou aqui');
             const livros = yield livroRepositorio_1.LivroRepositorio.buscar();
+            console.log('passou');
             res.json(livros);
         }
         catch (error) {
@@ -25,8 +27,9 @@ function getLivro(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const id = req.params.id;
+            console.log('parou aqui');
             const livro = yield livroRepositorio_1.LivroRepositorio.buscarLivroPorId(id);
-            res.json;
+            console.log('passou');
             if (livro === null) {
                 res.status(404).end();
             }

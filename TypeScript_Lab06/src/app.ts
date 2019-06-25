@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import errorHandler from 'errorhandler';
+import errorhandler from 'errorhandler';
 import {path as pathLivros, router as routerLivros} from './api/livro.rotas';
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(pathLivros, routerLivros);
 
 if(process.env.NODE_ENV !== "production"){
-    app.use(errorHandler);
+    app.use(errorhandler);
 }
 
 export default app;

@@ -6,7 +6,7 @@ import { connect } from "mongoose";
 
 async function Main(){
 
-    const url ="https://reqres.in"
+    const url ="https://"
     try{
 
        
@@ -69,21 +69,16 @@ async function Main(){
        debugger
        const servidorMongoDB = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
        console.log(servidorMongoDB);
-       await connect(servidorMongoDB,{useNewUrlParser: true});
+       const conexao = await connect(servidorMongoDB,{useNewUrlParser: true});
 
        //iniciar Express
        app.listen(app.get('port'), ()=>{
            console.log(`Express executando em http://localhost:${app.get('port')} no modo ${app.get('env')}`);
        });
 
-       let resposta: Response = await fetch(`${servidorMongoDB}/livros`);    
-        if(resposta.ok){         
-            let post:Post = await resposta.json();
-            post.data.forEach(p => console.log(p));            
-        }else{
-            console.log(`Erro: ${resposta.status}`);
+       if(conexao && conexao.connect){
+           conexao.connection.close();
        }
-
 
     }catch(err){
         console.log(`Erro: ${err}`);

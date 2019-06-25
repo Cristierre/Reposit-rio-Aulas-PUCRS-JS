@@ -11,12 +11,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_fetch_1 = __importDefault(require("node-fetch"));
 const app_1 = __importDefault(require("./app"));
 const mongoose_1 = require("mongoose");
 function Main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "https://reqres.in";
+        const url = "https://";
         try {
             /*
                     //GET
@@ -61,18 +60,13 @@ function Main() {
             debugger;
             const servidorMongoDB = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
             console.log(servidorMongoDB);
-            yield mongoose_1.connect(servidorMongoDB, { useNewUrlParser: true });
+            const conexao = yield mongoose_1.connect(servidorMongoDB, { useNewUrlParser: true });
             //iniciar Express
             app_1.default.listen(app_1.default.get('port'), () => {
                 console.log(`Express executando em http://localhost:${app_1.default.get('port')} no modo ${app_1.default.get('env')}`);
             });
-            let resposta = yield node_fetch_1.default(`${servidorMongoDB}/livros`);
-            if (resposta.ok) {
-                let post = yield resposta.json();
-                post.data.forEach(p => console.log(p));
-            }
-            else {
-                console.log(`Erro: ${resposta.status}`);
+            if (conexao && conexao.connect) {
+                conexao.connection.close();
             }
         }
         catch (err) {

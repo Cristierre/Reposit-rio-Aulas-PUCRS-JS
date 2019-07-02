@@ -10,9 +10,6 @@ try{
     app.listen(3000, function(){
         console.log('Escutando a porta 3000');
     });
-    app.post('/',function(req, res){
-        res.send(Pessoa);
-    });
     
 }catch(error){
     console.log(error);
